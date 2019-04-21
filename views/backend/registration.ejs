@@ -1,0 +1,64 @@
+
+
+<% include partials/header %>
+<body>
+
+<form  class="form-horizontal" id="regisform"  method= "POST" action="/admin/registration" enctype="multipart/form-data">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Form Name</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Username</label>  
+  <div class="col-md-4">
+  <input id="username" name="username" type="text" placeholder="username" class="form-control input-md">
+  <span class="help-block">Please enter username</span>  
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Address</label>  
+  <div class="col-md-4">
+  <input id="address" name="address" type="text" placeholder="username" class="form-control input-md" >
+  <span class="help-block">Please enter you address</span>  
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Photo</label>  
+  <div class="col-md-4">
+    <input type="file" id="userphoto" name="userphoto" class="form-control input-md" multiple>
+  </div>
+</div>
+
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Password">password</label>
+  <div class="col-md-4">
+    <input id="password" name="password" type="password" placeholder="password" class="form-control input-md">
+    <span class="help-block">Please enter password</span>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit">submit</label>
+  <div class="col-md-4">
+    <button id="submit" name="submit"  class="btn btn-info">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+<<!-- button id="testj" > click</button>
+
+<button id="testjq" class="jclass"> Test Some Jquery</button>
+ -->
+</body>
+<% include partials/footer %>
