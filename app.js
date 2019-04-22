@@ -3,6 +3,27 @@ var myapp = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var multer = require('multer');
+
+var mysequelize = require('./Configs/dbconfigs')
+var usermodel = require('./models/UsersModel');
+console.log(mysequelize);
+// var mysql = require('mysql');
+// const Sequelize = require('sequelize');
+// var usermodel = require('./models/UsersModel')
+// console.log(mysequelize);
+
+
+
+
+
+
+
+
+
+
+
+
+
 myapp.use(bodyParser.urlencoded({extended:true}))
 myapp.use(bodyParser.json());
 myapp.use(express.static(
@@ -11,10 +32,6 @@ myapp.use(express.static(
 myapp.set('views', __dirname+'/views');
 myapp.set('view engine', 'ejs');
 
-// var upload = multer( 
-// { dest : 'resources/uploads'
-// }
-// )
 
 var mystorage = multer.diskStorage({
 
@@ -29,9 +46,42 @@ filename : function(req,file,cb){
 }
 
 })
-
 var upload = multer({ storage: mystorage })
+// const sequelize = new Sequelize('softwaricahotel', 'root', '' ,{
+// 	host: 'localhost',
+// 	dialect : 'mysql'
+// });
 
+// sequelize 
+// .authenticate()
+// .then(function(result){console.log('Conne')},function(err){})
+// // .then(function(){
+// //     console.log('Connection has been established successfully.');
+
+// // })
+// // .catch(function(err){
+// // 	console.log(err);
+// // })
+// console.log('I am here');
+
+
+
+
+
+
+// var connection = mysql.createConnection({
+
+// 	host: 'localhost',
+// 	user: 'root',
+// 	password:'',
+// 	database:'softwaricahotel'
+// })
+// connection.connect();
+// connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+//   if (error) throw error;
+//   console.log('The solution is: ', results[0].solution);
+// });
+// connection.end();
 
 
 
@@ -50,7 +100,6 @@ console.log('test');
 console.log(req.file);
 	// res.send({"test":"sdfsf"})
 })
-
 
 
 
