@@ -23,16 +23,11 @@ const myUsers = mysequelize.sequelize.define('myUsers',
 		allowNull: false
 	},
 
-	testval : {
+	address : {
 		type: mysequelize.Sequelize.STRING(50),
 		allowNull:false
 	}
 
-},
-
-{
-	freezeTableName : true,
-	tableName: 'hotel_users'
 }
 
 )
@@ -41,18 +36,10 @@ myUsers.sync({force:false})
 .then(function(){
 console.log('users table created')
 })
-.catch(function(){
+.catch(function(err){
+	console.log(err)
 	console.log('err creating table')
 })
-// myUsers.findOne({
-// 	where: { username : 'test'},
-// 	attributes: ['id', 'password']
-// })
-// .then(function(user){
-// 	console.log(user.dataValues);
-// })
-// .catch(function(err){
 
-// })
 
-// module.exports = myUsers;
+module.exports = myUsers;

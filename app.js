@@ -4,70 +4,9 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
-var usermodel = require('./models/UsersModel');
-
-
-// usermodel.create({
-// 	username: 'ram',
-// 	password: 'gggggg',
-// 	userphoto: 'imaga',
-// 	testval: 'eeeee'
-// })
-// .then(function(user){
-// // console.log(user)
-// console.log(user.get({
-//     plain: true
-//   }))
-
-// })
-// .catch(function(err){
-// console.log('in error');
-// console.log(err)
-// })
-// usermodel.findOne({
-// 	where: { username : 'test'},
-// 	attributes: ['id', 'password']
-// })
-// .then(function(user){
-// 	console.log(user.dataValues);
-// })
-// .catch(function(err){
-
-// })
-
-// usermodel.findAll({
-// 	where: {id:3}
-// })
-// .then(function(result){
-// 	console.log(result[0].dataValues)
-// })
-
-
-// usermodel.update({ password: 'new pass'},
-// 	 			 { where : { username: 'manish'}}
-// 	 			 )
-// .then(function(result){
-// console.log(result);
-// })
-// .catch(function(err){
-// 	console.log(err);
-// })
-
-// usermodel.destroy(
-// 	{ where : {username: 'ram'}}
-// )
-// .then(function(result){
-
-// })
-// .catch(function(result){
-
-// })
-
-
-
-
-
-
+var UserController = require('./controllers/UsersController')
+// var usermodel = require('./models/UsersModel');
+// var userc = require('./controllers/UserController')
 
 myapp.use(bodyParser.urlencoded({extended:true}))
 myapp.use(bodyParser.json());
@@ -87,11 +26,20 @@ destination : function(req,file,cb){
 filename : function(req,file,cb){
 // let ext = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
 // 	 cb(null, file.fieldname+ext)
-	cb(null,'sdfsdfsdf')
+	cb(null,file.originalname)
 }
 
 })
 var upload = multer({ storage: mystorage })
+
+
+// myapp.get('/test', function(req,res,next){
+// 	console.log('in 1st middleware')
+// 	// next();
+// },
+//  function(req,res){
+//  	console.log('in second middleware')
+//  })
 
 
 
@@ -99,15 +47,23 @@ myapp.get('/admin/login', function(req,res){
 res.render('backend/login', {message:''});
 })
 
+myapp.post('/admin/login',UserController.userAuth, function(req,res){
+	
+})
+
 myapp.get('/admin/registration', function(req,res){
 	res.render('backend/registration');
 })
 
 
-myapp.post('/admin/registration',upload.single('userphoto'),function(req,res,next){
-console.log('test');
-console.log(req.file);
+myapp.post('/admin/registration',upload.single('userphoto'),
+	UserController.userRegister,function(req,res){
+// console.log('test');
+// console.log(req.file);
 	// res.send({"test":"sdfsf"})
+
+	// res.send({'status':'success'})
+	res.send({'status':200})
 })
 
 
