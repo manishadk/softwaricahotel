@@ -28,17 +28,21 @@ const myUsers = mysequelize.sequelize.define('myUsers',
 		allowNull:false
 	}
 
+},
+{
+	freezeTableName:true,
+	tableName:'hotel_users'
 }
 
 )
 
 myUsers.sync({force:false})
 .then(function(){
-console.log('users table created')
+// console.log('users table created')
 })
 .catch(function(err){
-	console.log(err)
-	console.log('err creating table')
+	// console.log(err)
+	// console.log('err creating table')
 })
 
 

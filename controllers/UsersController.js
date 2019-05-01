@@ -10,46 +10,41 @@ usermodel.create({
 })
 .then(function(result){
 	next();
-// console.log(result);
 })
 .catch(function(err){
+
 })
 }
 
 function userAuth(req,res){
 	console.log( req.body.username)
-
 	usermodel.findOne({
-	where: { username : 'manish'},
-	attributes: ['id', 'password']
+		where: {username : req.body.username}
+	})
+	.then(function(result){
+		console.log('in then')
+		console.log(result.dataValues);
+	})
+	.catch(function(err){
+		console.log(err);
+	})
+}
+
+function listHotels(req,res){
+	usermodel.findAll()
+	.then(function(result){
+
+	})
+	.catch(function(err){
+
+	})
+}
+
+function updateHotels(req,res){
+usermodel.update({
+	'title':req.body.title
+	'location':req.body.location
 })
-.then(function(user){
-	console.log(user);
-})
-.catch(function(err){
-
-})
-
-	// usermodel.findOne({
-	// 	where : { username : 'manish'}
-	// })
-	// .then(function(result){
-
-	// 	console.log(result)
-	// 	console.log('sdasdasd')
-	// 	// if(){
-	// 	// 	res.send({status:200})
-
-	// 	// }
-	// 	// else {
-	// 	// 	res.send({status:401})
-	// 	// }
-
-	// })
-	// .catch(function(err){
-	// 	console.log(err)
-
-	// })
 }
 
 module.exports= {

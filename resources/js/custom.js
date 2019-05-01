@@ -49,7 +49,6 @@ password: $('#password').val(),
 userphoto : $('#userphoto')[0].files[0]
 
 }
-
 console.log(mydata['username'])
 
 var formdata = new FormData();
@@ -76,12 +75,13 @@ for (key in mydata){
 // dataType : 'json',
 
 // success : function(result,status) {
-
+// console.log(result)
 
 // },
 
 // error : function(jqXHR,status){
 
+// console.log(status)
 // }
 
 
@@ -135,7 +135,7 @@ success: function(result,status,jqXHR){
 	console.log(status)
 	if(result.status == 200){
 
-window.location = 'http://localhost:3000/admin/login'
+// window.location = 'http://localhost:3000/admin/login'
 	}
 
 },
@@ -153,43 +153,3 @@ console.log(status);
 })
 
 
-
-
-
-
-
-
-
-
-// $.ajax({
-
-// url : 'http://localhost:3000/admin/registration',
-// method: 'POST',
-// contentType: 'application/json',
-// dataType: 'json',
-// data : JSON.stringify(regisdetails),
-// success: function(){
-// window.location = 'http://localhost:3000/'
-// },
-// error: function (){
-
-
-// }
-
-
-// })
-
-
-// // console.log(username);
-// // $.ajax({
-
-	
-// // })
-
-
-// })
-
-
-
-
-// })

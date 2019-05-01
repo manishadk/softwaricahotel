@@ -24,24 +24,11 @@ destination : function(req,file,cb){
 },
 
 filename : function(req,file,cb){
-// let ext = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
-// 	 cb(null, file.fieldname+ext)
 	cb(null,file.originalname)
 }
 
 })
 var upload = multer({ storage: mystorage })
-
-
-// myapp.get('/test', function(req,res,next){
-// 	console.log('in 1st middleware')
-// 	// next();
-// },
-//  function(req,res){
-//  	console.log('in second middleware')
-//  })
-
-
 
 myapp.get('/admin/login', function(req,res){
 res.render('backend/login', {message:''});
@@ -58,11 +45,7 @@ myapp.get('/admin/registration', function(req,res){
 
 myapp.post('/admin/registration',upload.single('userphoto'),
 	UserController.userRegister,function(req,res){
-// console.log('test');
-// console.log(req.file);
-	// res.send({"test":"sdfsf"})
 
-	// res.send({'status':'success'})
 	res.send({'status':200})
 })
 
